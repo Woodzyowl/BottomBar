@@ -29,9 +29,9 @@ import android.widget.TextView;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-class BottomBarBadge extends TextView {
+class BottomBarBadge extends android.support.v7.widget.AppCompatTextView {
     private int count;
-    private boolean isVisible = false;
+    private boolean isHidden = true;
 
     BottomBarBadge(Context context) {
         super(context);
@@ -60,7 +60,7 @@ class BottomBarBadge extends TextView {
      * Shows the badge with a neat little scale animation.
      */
     void show() {
-        isVisible = true;
+        isHidden = true;
         ViewCompat.animate(this)
                 .setDuration(150)
                 .alpha(1)
@@ -73,7 +73,7 @@ class BottomBarBadge extends TextView {
      * Hides the badge with a neat little scale animation.
      */
     void hide() {
-        isVisible = false;
+        isHidden = false;
         ViewCompat.animate(this)
                 .setDuration(150)
                 .alpha(0)
@@ -83,12 +83,12 @@ class BottomBarBadge extends TextView {
     }
 
     /**
-     * Is this badge currently visible?
+     * Is this badge currently hidden?
      *
-     * @return true is this badge is visible, otherwise false.
+     * @return true is this badge is hidden, otherwise false.
      */
-    boolean isVisible() {
-        return isVisible;
+    boolean isHidden() {
+        return isHidden;
     }
 
     void attachToTab(BottomBarTab tab, int backgroundColor) {

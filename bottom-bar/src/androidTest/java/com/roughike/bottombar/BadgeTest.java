@@ -50,7 +50,7 @@ public class BadgeTest {
             @Override
             public void run() {
                 bottomBar.selectTabWithId(com.roughike.bottombar.test.R.id.tab_nearby);
-                assertFalse(nearby.badge.isVisible());
+                assertFalse(!nearby.badge.isHidden());
             }
         });
     }

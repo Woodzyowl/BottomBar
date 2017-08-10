@@ -422,7 +422,7 @@ public class BottomBarTab extends LinearLayout {
 
         setSelected(false);
 
-        if (!isShifting && badge != null && !badge.isVisible()) {
+        if (!isShifting && badge != null && !badge.isHidden()) {
             badge.show();
         }
     }
