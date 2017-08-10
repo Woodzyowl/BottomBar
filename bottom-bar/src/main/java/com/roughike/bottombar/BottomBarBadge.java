@@ -60,7 +60,7 @@ class BottomBarBadge extends android.support.v7.widget.AppCompatTextView {
      * Shows the badge with a neat little scale animation.
      */
     void show() {
-        isHidden = true;
+        isHidden = false;
         ViewCompat.animate(this)
                 .setDuration(150)
                 .alpha(1)
@@ -73,7 +73,7 @@ class BottomBarBadge extends android.support.v7.widget.AppCompatTextView {
      * Hides the badge with a neat little scale animation.
      */
     void hide() {
-        isHidden = false;
+        isHidden = true;
         ViewCompat.animate(this)
                 .setDuration(150)
                 .alpha(0)
