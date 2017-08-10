@@ -326,8 +326,10 @@ public class BottomBarTab extends LinearLayout {
 
         if (count <= 0) {
             badge.hide();
+            badge.disable();
         } else {
             badge.show();
+            badge.enable();
         }
 
         if (isActive && badgeHidesWhenActive) {
@@ -422,7 +424,7 @@ public class BottomBarTab extends LinearLayout {
 
         setSelected(false);
 
-        if (!isShifting && badge != null && !badge.isHidden()) {
+        if (!isShifting && badge != null && !badge.isDisabled()) {
             badge.show();
         }
     }

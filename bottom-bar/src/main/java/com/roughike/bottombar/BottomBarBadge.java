@@ -32,6 +32,7 @@ import android.widget.TextView;
 class BottomBarBadge extends android.support.v7.widget.AppCompatTextView {
     private int count;
     private boolean isHidden = true;
+    private boolean isDisabled = true;
 
     BottomBarBadge(Context context) {
         super(context);
@@ -60,7 +61,7 @@ class BottomBarBadge extends android.support.v7.widget.AppCompatTextView {
      * Shows the badge with a neat little scale animation.
      */
     void show() {
-        isHidden = false;
+        isDisabled = false;
         ViewCompat.animate(this)
                 .setDuration(150)
                 .alpha(1)
@@ -82,6 +83,14 @@ class BottomBarBadge extends android.support.v7.widget.AppCompatTextView {
                 .start();
     }
 
+    void disable() {
+        isDisabled = true;
+    }
+
+    void enable() {
+        isDisabled = false;
+    }
+
     /**
      * Is this badge currently hidden?
      *
@@ -90,6 +99,8 @@ class BottomBarBadge extends android.support.v7.widget.AppCompatTextView {
     boolean isHidden() {
         return isHidden;
     }
+
+    boolean isDisabled() { return isDisabled(); }
 
     void attachToTab(BottomBarTab tab, int backgroundColor) {
         ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(
