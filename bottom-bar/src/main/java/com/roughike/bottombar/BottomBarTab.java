@@ -317,21 +317,18 @@ public class BottomBarTab extends LinearLayout {
     }
 
     public void setBadgeCount(int count) {
-        if (count <= 0) {
-            if (badge != null) {
-                badge.removeFromTab(this);
-                badge = null;
-            }
-
-            return;
-        }
-
         if (badge == null) {
             badge = new BottomBarBadge(getContext());
             badge.attachToTab(this, badgeBackgroundColor);
         }
 
         badge.setCount(count);
+
+        if (count <= 0) {
+            badge.hide();
+        } else {
+            badge.show();
+        }
 
         if (isActive && badgeHidesWhenActive) {
             badge.hide();
