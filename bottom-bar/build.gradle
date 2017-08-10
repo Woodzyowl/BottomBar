@@ -72,7 +72,7 @@ dependencies {
 
 apply plugin: 'com.github.dcendents.android-maven'
 
-group = publishedGroupId                               // Maven Group ID for the artifact
+group='com.github.Woodzyowl'
 
 install {
     repositories.mavenInstaller {
@@ -122,25 +122,25 @@ if (project.hasProperty("android")) { // Android libraries
         classifier = 'sources'
         from android.sourceSets.main.java.srcDirs
     }
-
+/*
     task javadoc(type: Javadoc) {
         source = android.sourceSets.main.java.srcDirs
         classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
-    }
+    }*/
 } else { // Java libraries
     task sourcesJar(type: Jar, dependsOn: classes) {
         classifier = 'sources'
         from sourceSets.main.allSource
     }
 }
-
+/*
 task javadocJar(type: Jar, dependsOn: javadoc) {
     classifier = 'javadoc'
     from javadoc.destinationDir
-}
+}*/
 
 artifacts {
-    archives javadocJar
+//    archives javadocJar
     archives sourcesJar
 }
 

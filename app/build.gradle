@@ -18,6 +18,16 @@ android {
         }
     }
 }
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
+    }
+}
+
 configurations.all {
     resolutionStrategy.force "com.android.support:support-annotations:${rootProject.ext.supportLibraryVersion}"
 }
