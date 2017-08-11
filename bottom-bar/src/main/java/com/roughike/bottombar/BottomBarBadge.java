@@ -61,30 +61,32 @@ class BottomBarBadge extends android.support.v7.widget.AppCompatTextView {
      * Shows the badge with a neat little scale animation.
      */
     void show() {
-        isDisabled = false;
+        if(isDisabled)  { return; }
         isHidden = false;
         ViewCompat.animate(this)
-                .setDuration(150)
-                .alpha(1)
-                .scaleX(1)
-                .scaleY(1)
-                .start();
+                  .setDuration(150)
+                  .alpha(1)
+                  .scaleX(1)
+                  .scaleY(1)
+                  .start();
     }
 
     /**
      * Hides the badge with a neat little scale animation.
      */
     void hide() {
+        if(isDisabled) { return; }
         isHidden = true;
         ViewCompat.animate(this)
-                .setDuration(150)
-                .alpha(0)
-                .scaleX(0)
-                .scaleY(0)
-                .start();
+                  .setDuration(150)
+                  .alpha(0)
+                  .scaleX(0)
+                  .scaleY(0)
+                  .start();
     }
 
     void disable() {
+        hide();
         isDisabled = true;
     }
 
@@ -155,6 +157,7 @@ class BottomBarBadge extends android.support.v7.widget.AppCompatTextView {
     }
 
     void adjustPositionAndSize(BottomBarTab tab) {
+        if(isDisabled) { return; }
         AppCompatImageView iconView = tab.getIconView();
         ViewGroup.LayoutParams params = getLayoutParams();
 
