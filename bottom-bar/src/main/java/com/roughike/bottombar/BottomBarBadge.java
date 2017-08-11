@@ -62,6 +62,7 @@ class BottomBarBadge extends android.support.v7.widget.AppCompatTextView {
      */
     void show() {
         isDisabled = false;
+        isHidden = false;
         ViewCompat.animate(this)
                 .setDuration(150)
                 .alpha(1)

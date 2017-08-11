@@ -469,7 +469,7 @@ public class BottomBarTab extends LinearLayout {
         if (!animated) {
             getLayoutParams().width = (int) endWidth;
 
-            if (!isActive && badge != null) {
+            if (!isActive && badge != null && !badge.isDisabled()) {
                 badge.adjustPositionAndSize(this);
                 badge.show();
             }
@@ -495,7 +495,7 @@ public class BottomBarTab extends LinearLayout {
         postDelayed(new Runnable() {
             @Override
             public void run() {
-                if (!isActive && badge != null) {
+                if (!isActive && badge != null && !badge.isDisabled()) {
                     clearAnimation();
                     badge.adjustPositionAndSize(BottomBarTab.this);
                     badge.show();
