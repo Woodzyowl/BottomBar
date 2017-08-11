@@ -161,7 +161,7 @@ class BottomBarBadge extends android.support.v7.widget.AppCompatTextView {
         ViewGroup.LayoutParams params = getLayoutParams();
 
         int size = Math.max(getWidth(), getHeight());
-        float xOffset = (float) (iconView.getWidth() / 1.25);
+        float xOffset = (float) (getWidth() * 1.5);
 
         setX(iconView.getX() + xOffset);
         setTranslationY(10);
