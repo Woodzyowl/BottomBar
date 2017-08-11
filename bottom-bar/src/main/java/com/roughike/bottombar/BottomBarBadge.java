@@ -101,7 +101,7 @@ class BottomBarBadge extends android.support.v7.widget.AppCompatTextView {
         return isHidden;
     }
 
-    boolean isDisabled() { return isDisabled(); }
+    boolean isDisabled() { return isDisabled; }
 
     void attachToTab(BottomBarTab tab, int backgroundColor) {
         ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(
