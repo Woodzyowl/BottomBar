@@ -172,7 +172,7 @@ class BottomBarBadge extends android.support.v7.widget.AppCompatTextView {
             setLayoutParams(params);
         }
 
-        if (isHidden){ hide(); }
+        if (isDisabled || isHidden) { hide(); }
     }
 
     @SuppressWarnings("deprecation")
