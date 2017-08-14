@@ -480,7 +480,7 @@ public class BottomBarTab extends LinearLayout {
 
         float start = getWidth();
 
-        ValueAnimator animator = ValueAnimator.ofFloat(start, endWidth);
+        final ValueAnimator animator = ValueAnimator.ofFloat(start, endWidth);
         animator.setDuration(150);
         animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
@@ -495,16 +495,16 @@ public class BottomBarTab extends LinearLayout {
         });
 
         // Workaround to avoid using faulty onAnimationEnd() listener
-        /*postDelayed(new Runnable() {
+        postDelayed(new Runnable() {
             @Override
             public void run() {
                 if (!isActive && badge != null && !badge.isDisabled()) {
-                    clearAnimation();
+                    animator.setCurrentPlayTime(animator.getDuration());
                     updateBadgePosition();
                     badge.show();
                 }
             }
-        }, animator.getDuration());*/
+        }, animator.getDuration());
 
         animator.start();
     }
