@@ -498,10 +498,10 @@ public class BottomBarTab extends LinearLayout {
         postDelayed(new Runnable() {
             @Override
             public void run() {
-                if (!isActive && badge != null && !badge.isDisabled()) {
+                if (/*!isActive && */badge != null && !badge.isDisabled()) {
                     clearAnimation();
                     updateBadgePosition();
-                    badge.show();
+                //    badge.show();
                 }
             }
         }, animator.getDuration());
