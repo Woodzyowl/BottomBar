@@ -493,18 +493,17 @@ public class BottomBarTab extends LinearLayout {
                 updateBadgePosition();
             }
         });
-/*
+
         // Workaround to avoid using faulty onAnimationEnd() listener
         postDelayed(new Runnable() {
             @Override
             public void run() {
-                if (!isActive && badge != null && !badge.isDisabled()) {
+                if (badge != null && !badge.isDisabled()) {
                     animator.setCurrentPlayTime((int) (animator.getDuration()-1));
                     updateBadgePosition();
-                    badge.show();
                 }
             }
-        }, animator.getDuration());*/
+        }, animator.getDuration());
 
         animator.start();
     }
