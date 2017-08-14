@@ -500,8 +500,8 @@ public class BottomBarTab extends LinearLayout {
             public void run() {
                 if (/*!isActive && */badge != null && !badge.isDisabled()) {
                     animator.setCurrentPlayTime((int) (animator.getDuration()-1));
-                    updateBadgePosition();
-                    badge.show();
+                //    updateBadgePosition();
+                //    badge.show();
                 }
             }
         }, animator.getDuration());
