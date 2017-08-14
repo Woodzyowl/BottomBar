@@ -319,7 +319,7 @@ public class BottomBarTab extends LinearLayout {
     public void setBadgeCount(int count) {
         if (badge == null) {
             badge = new BottomBarBadge(getContext());
-            badge.attachToTab(this, badgeBackgroundColor);
+            badge.attachToTab(this, badgeBackgroundColor, isActive);
         }
 
         badge.setCount(count);
@@ -403,7 +403,7 @@ public class BottomBarTab extends LinearLayout {
     void deselect(boolean animate) {
         isActive = false;
 
-        boolean isShifting = type == Type.SHIFTING;
+        boolean isShifting = isShifting();
 
         float titleScale = isShifting ? 0 : INACTIVE_FIXED_TITLE_SCALE;
         int iconPaddingTop = isShifting ? sixteenDps : eightDps;
@@ -425,6 +425,10 @@ public class BottomBarTab extends LinearLayout {
         if (!isShifting && badge != null) {
             badge.show();
         }
+    }
+
+    public boolean isShifting() {
+        return type == Type.SHIFTING;
     }
 
     private void animateColors(int previousColor, int color) {
@@ -486,6 +490,7 @@ public class BottomBarTab extends LinearLayout {
 
                 params.width = Math.round((float) animator.getAnimatedValue());
                 setLayoutParams(params);
+                updateBadgePosition();
             }
         });
 
@@ -495,7 +500,7 @@ public class BottomBarTab extends LinearLayout {
             public void run() {
                 if (!isActive && badge != null && !badge.isDisabled()) {
                     clearAnimation();
-                    badge.adjustPositionAndSize(BottomBarTab.this);
+                    updateBadgePosition();
                     badge.show();
                 }
             }

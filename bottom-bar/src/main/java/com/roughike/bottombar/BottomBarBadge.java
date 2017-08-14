@@ -105,7 +105,7 @@ class BottomBarBadge extends android.support.v7.widget.AppCompatTextView {
 
     boolean isDisabled() { return isDisabled; }
 
-    void attachToTab(BottomBarTab tab, int backgroundColor) {
+    void attachToTab(BottomBarTab tab, int backgroundColor, boolean shiftingToActive) {
         ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
@@ -161,7 +161,8 @@ class BottomBarBadge extends android.support.v7.widget.AppCompatTextView {
         ViewGroup.LayoutParams params = getLayoutParams();
 
         int size = Math.max(getWidth(), getHeight());
-        float xOffset = (float) (getWidth() * 1.5);
+
+        float xOffset = (float) (iconView.getWidth() / 1.25);
 
         setX(iconView.getX() + xOffset);
         setTranslationY(10);
