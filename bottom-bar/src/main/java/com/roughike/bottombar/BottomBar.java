@@ -558,7 +558,7 @@ public class BottomBar extends LinearLayout implements View.OnClickListener, Vie
         BottomBarTab oldTab = getCurrentTab();
         BottomBarTab newTab = getTabAtPosition(position);
 
-        oldTab.deselect(animate);
+        if (oldTab != null) { oldTab.deselect(animate); }
         newTab.select(animate);
 
         updateSelectedTab(position);
@@ -961,7 +961,7 @@ public class BottomBar extends LinearLayout implements View.OnClickListener, Vie
 
     private void shiftingMagic(BottomBarTab oldTab, BottomBarTab newTab, boolean animate) {
         if (isShiftingMode()) {
-            oldTab.updateWidth(inActiveShiftingItemWidth, animate);
+            if(oldTab != null) { oldTab.updateWidth(inActiveShiftingItemWidth, animate); }
             newTab.updateWidth(activeShiftingItemWidth, animate);
         }
     }
